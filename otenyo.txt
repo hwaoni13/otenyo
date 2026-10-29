@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRAFT CREW HUB - 오테뇨 크루 공식 사이트</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              periwinkle: '#9DB2EC',
+              light: '#BCCBFF',
+              dark: '#161622',
+              card: '#1F1E2E',
+              border: '#312F45',
+              tag: '#2A2740',
+              accent: '#6366F1'
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0F0E17;
+      color: #E2E8F0;
+      font-family: 'Pretendard', sans-serif;
+    }
+    .periwinkle-glow {
+      box-shadow: 0 0 25px -5px rgba(157, 178, 236, 0.25);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #312F45;
+      border-radius: 9999px;
+    }
+    .tag-box {
+      background: #2A2740;
+      border: 1px solid rgba(157, 178, 236, 0.3);
+      color: #9DB2EC;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-periwinkle selection:text-black">
+
+  <!-- 헤더 네비게이션 -->
+  <header class="sticky top-0 z-40 bg-[#0F0E17]/90 backdrop-blur-md border-b border-brand-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="w-3 h-3 rounded-full bg-brand-periwinkle animate-ping"></span>
+        <a href="#" class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+          <span class="text-brand-periwinkle">CRAFT</span> CREW HUB
+        </a>
+      </div>
+      
+      <!-- 네비게이션 탭 -->
+      <nav class="flex items-center space-x-1 sm:space-x-2">
+        <button onclick="switchTab('main')" id="tab-btn-main" class="px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-brand-card text-brand-periwinkle border border-brand-border">
+          메인
+        </button>
+        <button onclick="switchTab('world')" id="tab-btn-world" class="px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-white">
+          세계관
+        </button>
+        <button onclick="switchTab('schedule')" id="tab-btn-schedule" class="px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-white">
+          방송 일정
+        </button>
+        <button onclick="switchTab('members')" id="tab-btn-members" class="px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-white">
+          크루 멤버
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex-1 w-full">
+
+    <!-- 1. 메인 탭 -->
+    <section id="tab-main" class="space-y-8 block">
+      <!-- 잠뜰 스타일 인트로 배너 -->
+      <div class="bg-gradient-to-r from-brand-card via-[#25233A] to-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border periwinkle-glow relative overflow-hidden">
+        <div class="relative z-10 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg tag-box text-xs font-bold">
+            <span>[ 오테뇨 ]</span> 공식 크루 허브
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+            마인크래프트 광기와 몰입의 세계,<br>
+            <span class="text-brand-periwinkle">CRAFT CREW HUB</span>에 오신 것을 환영합니다!
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+            토요일 대규모 합방 녹화부터 자체 제작 맵 탐험까지! <br class="hidden sm:inline">
+            크루 지원, 일정 확인 및 각종 소식을 가장 빠르게 확인해 보세요.
+          </p>
+        </div>
+        <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
+          <i data-lucide="gamepad-2" class="w-72 h-72 text-brand-periwinkle"></i>
+        </div>
+      </div>
+
+      <!-- 공지사항 카드 (트리거 탑재) -->
+      <div class="bg-brand-card rounded-2xl p-6 border border-brand-border space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-brand-border/60">
+          <div class="flex items-center gap-2">
+            <i data-lucide="megaphone" class="w-5 h-5 text-brand-periwinkle"></i>
+            <h2 class="text-lg font-bold text-white select-none">
+              크루 중요 공지사<span onclick="triggerAdminModal()" class="cursor-pointer hover:text-brand-periwinkle transition-colors" title="">항</span>
+            </h2>
+          </div>
+          <span class="text-xs text-slate-400 font-mono" id="notice-date-display">LATEST</span>
+        </div>
+        <div id="notice-content-display" class="text-slate-300 text-sm leading-relaxed whitespace-pre-line bg-[#161524] p-4 rounded-xl border border-brand-border/40">
+          불러오는 중...
+        </div>
+      </div>
+
+      <!-- 빠른 지원 & 주간 핵심 액션 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-brand-card rounded-2xl p-6 border border-brand-border flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="inline-block px-2.5 py-1 rounded-md tag-box text-xs font-bold">RECRUIT</div>
+            <h3 class="text-xl font-bold text-white">크루원 상시 모집 중</h3>
+            <p class="text-slate-400 text-sm">
+              마이크 세팅 가능하고 텐션 꽉 채워주실 분 누구나 환영합니다. 주말 합방에서 함께 놀아봐요!
+            </p>
+          </div>
+          <a href="https://forms.gle" target="_blank" class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-brand-periwinkle hover:bg-brand-light text-slate-900 font-bold rounded-xl transition-all shadow-lg shadow-brand-periwinkle/10">
+            <span>크루 지원서 작성하기</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <div class="bg-brand-card rounded-2xl p-6 border border-brand-border flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="inline-block px-2.5 py-1 rounded-md tag-box text-xs font-bold">RECORDING</div>
+            <h3 class="text-xl font-bold text-white">이번 주 녹화 일정</h3>
+            <p class="text-slate-400 text-sm" id="main-quick-schedule">
+              상세 일정 탭에서 전체 스케줄을 확인하실 수 있습니다.
+            </p>
+          </div>
+          <button onclick="switchTab('schedule')" class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-[#2A2740] hover:bg-[#343050] text-brand-periwinkle font-bold rounded-xl transition-all border border-brand-border">
+            <span>방송 일정 보러가기</span>
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 세계관 탭 (요청대로 기본 빈 상태) -->
+    <section id="tab-world" class="space-y-6 hidden">
+      <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border space-y-4">
+        <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+          <div class="flex items-center gap-3">
+            <i data-lucide="compass" class="w-6 h-6 text-brand-periwinkle"></i>
+            <h2 class="text-2xl font-bold text-white">세계관</h2>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full tag-box font-medium">STORY ARCHIVE</span>
+        </div>
+
+        <!-- 세계관 컨텐츠 영역 -->
+        <div id="world-content-display" class="min-h-[300px] flex flex-col justify-center items-center text-center p-8 bg-[#161524] rounded-xl border border-dashed border-brand-border/60">
+          <i data-lucide="scroll" class="w-12 h-12 text-slate-500 mb-3"></i>
+          <p class="text-slate-400 text-sm font-medium">아직 등록된 세계관 설정이 없습니다.</p>
+          <p class="text-slate-500 text-xs mt-1">공지사항의 '항'을 눌러 관리자 모드에서 언제든지 내용을 작성해 보세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 방송 일정 탭 -->
+    <section id="tab-schedule" class="space-y-6 hidden">
+      <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border space-y-6">
+        <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+          <div class="flex items-center gap-3">
+            <i data-lucide="calendar-clock" class="w-6 h-6 text-brand-periwinkle"></i>
+            <h2 class="text-2xl font-bold text-white">방송 및 녹화 타임테이블</h2>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full tag-box font-medium">SCHEDULE</span>
+        </div>
+
+        <div id="schedule-content-display" class="space-y-4">
+          <!-- 렌더링 영역 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 크루 멤버 탭 -->
+    <section id="tab-members" class="space-y-6 hidden">
+      <div class="bg-brand-card rounded-2xl p-6 sm:p-8 border border-brand-border space-y-6">
+        <div class="flex items-center justify-between pb-4 border-b border-brand-border">
+          <div class="flex items-center gap-3">
+            <i data-lucide="users" class="w-6 h-6 text-brand-periwinkle"></i>
+            <h2 class="text-2xl font-bold text-white">크루 멤버 프로필</h2>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full tag-box font-medium">ROSTER</span>
+        </div>
+
+        <div id="members-list-display" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 멤버 카드 렌더링 영역 -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 풋터 -->
+  <footer class="border-t border-brand-border py-6 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p>© 2026 CRAFT CREW HUB. All rights reserved.</p>
+      <p class="text-slate-600">Produced for Otenyo Crew</p>
+    </div>
+  </footer>
+
+  <!-- 비밀번호 입력 모달 -->
+  <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-brand-card border border-brand-border rounded-2xl max-w-sm w-full p-6 space-y-5 shadow-2xl">
+      <div class="space-y-1 text-center">
+        <div class="w-12 h-12 rounded-full bg-brand-tag text-brand-periwinkle flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">관리자 시크릿 접근</h3>
+        <p class="text-xs text-slate-400">비밀번호를 입력하여 편집 모드를 실행합니다.</p>
+      </div>
+
+      <div class="space-y-3">
+        <input type="password" id="admin-pass-input" placeholder="비밀번호 입력..." 
+               class="w-full px-4 py-2.5 bg-[#161524] border border-brand-border rounded-xl text-white text-sm focus:outline-none focus:border-brand-periwinkle"
+               onkeydown="if(event.key==='Enter') verifyAdminPass()">
+        <p id="auth-error-msg" class="text-rose-400 text-xs hidden text-center">비밀번호가 올바르지 않습니다.</p>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="closeAuthModal()" class="flex-1 py-2.5 bg-[#2A2740] text-slate-300 text-sm font-semibold rounded-xl hover:bg-[#343050] transition-colors">
+          취소
+        </button>
+        <button onclick="verifyAdminPass()" class="flex-1 py-2.5 bg-brand-periwinkle text-slate-900 text-sm font-bold rounded-xl hover:bg-brand-light transition-colors">
+          확인
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 관리자 대시보드 편집 모달 -->
+  <div id="admin-dashboard-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-brand-card border border-brand-border rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      
+      <!-- 모달 헤더 -->
+      <div class="px-6 py-4 border-b border-brand-border flex items-center justify-between bg-[#161524]">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          <h3 class="font-bold text-white text-base">크루 허브 통합 관리 패널</h3>
+        </div>
+        <button onclick="closeAdminDashboard()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- 모달 탭 스위처 -->
+      <div class="flex border-b border-brand-border bg-[#1A1828] px-6 text-sm">
+        <button onclick="setAdminTab('notice')" id="admin-tab-btn-notice" class="py-3 px-4 font-semibold text-brand-periwinkle border-b-2 border-brand-periwinkle">공지사항</button>
+        <button onclick="setAdminTab('world')" id="admin-tab-btn-world" class="py-3 px-4 font-semibold text-slate-400 hover:text-white">세계관</button>
+        <button onclick="setAdminTab('schedule')" id="admin-tab-btn-schedule" class="py-3 px-4 font-semibold text-slate-400 hover:text-white">방송 일정</button>
+        <button onclick="setAdminTab('members')" id="admin-tab-btn-members" class="py-3 px-4 font-semibold text-slate-400 hover:text-white">멤버 관리</button>
+      </div>
+
+      <!-- 모달 바디 (스크롤) -->
+      <div class="p-6 overflow-y-auto custom-scrollbar space-y-6 flex-1">
+        
+        <!-- 1. 공지사항 편집 -->
+        <div id="admin-panel-notice" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-1">공지 작성 일자</label>
+            <input type="text" id="edit-notice-date" class="w-full px-3 py-2 bg-[#161524] border border-brand-border rounded-xl text-white text-sm focus:border-brand-periwinkle focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-1">공지 본문 내용</label>
+            <textarea id="edit-notice-text" rows="6" class="w-full px-3 py-2 bg-[#161524] border border-brand-border rounded-xl text-white text-sm focus:border-brand-periwinkle focus:outline-none custom-scrollbar"></textarea>
+          </div>
+        </div>
+
+        <!-- 2. 세계관 편집 -->
+        <div id="admin-panel-world" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-1">세계관 스토리 및 설정 (자유롭게 입력)</label>
+            <textarea id="edit-world-text" rows="10" placeholder="여기에 오테뇨 크루 세계관 및 맵 스토리를 적어주세요..." class="w-full px-3 py-2 bg-[#161524] border border-brand-border rounded-xl text-white text-sm focus:border-brand-periwinkle focus:outline-none custom-scrollbar"></textarea>
+          </div>
+        </div>
+
+        <!-- 3. 방송 일정 편집 (JSON 형태) -->
+        <div id="admin-panel-schedule" class="space-y-4 hidden">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="block text-xs font-semibold text-slate-400">일정 목록 편집</label>
+              <button onclick="addNewScheduleRow()" class="text-xs text-brand-periwinkle hover:underline">+ 일정 추가</button>
+            </div>
+            <div id="admin-schedule-list" class="space-y-3">
+              <!-- 스케줄 행들 렌더링 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 멤버 편집 -->
+        <div id="admin-panel-members" class="space-y-4 hidden">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="block text-xs font-semibold text-slate-400">크루 멤버 관리</label>
+              <button onclick="addNewMemberRow()" class="text-xs text-brand-periwinkle hover:underline">+ 멤버 추가</button>
+            </div>
+            <div id="admin-members-list" class="space-y-3">
+              <!-- 멤버 행들 렌더링 -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 모달 풋터 (저장 액션) -->
+      <div class="px-6 py-4 border-t border-brand-border bg-[#161524] flex items-center justify-between">
+        <span class="text-xs text-emerald-400 flex items-center gap-1.5" id="save-status-indicator">
+          <i data-lucide="check-circle" class="w-4 h-4"></i> 실시간 연동 준비 완료
+        </span>
+        <button onclick="saveAllAdminData()" class="px-5 py-2.5 bg-brand-periwinkle hover:bg-brand-light text-slate-900 text-sm font-bold rounded-xl transition-all shadow-md">
+          변경사항 저장하기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 스크립트 로직 -->
+  <script>
+    // 비밀번호 상수
+    const ADMIN_PASS = "@오테뇨신기록";
+
+    // 기본 데이터 구조
+    const defaultData = {
+      notice: {
+        date: "2026. 10. 29",
+        content: "안녕하세요! 오테뇨 크루 공식 허브가 오픈되었습니다.\n이번 주 토요일 대규모 마인크래프트 합방 및 멤버 테스트가 진행될 예정입니다.\n지원서를 제출해 주신 분들은 디스코드 메시지를 꼭 확인해 주세요!"
+      },
+      world: "", // 요청대로 기본은 빈 상태
+      schedules: [
+        { day: "이번 주 금요일 20:00", title: "크루 오디오 및 마이크 싱크 리허설", tag: "디스코드" },
+        { day: "이번 주 토요일 19:00", title: "숙정학당 대규모 에피소드 본 녹화", tag: "메인 합방" },
+        { day: "이번 주 일요일 16:00", title: "하이라이트 숏폼 편집 회의 & 야생 플레이", tag: "자유 녹화" }
+      ],
+      members: [
+        { name: "오테뇨", role: "크루 대표 & 총괄 기획", desc: "숙정학당 맵 설계자이자 크루의 중심 MC" },
+        { name: "젤몬", role: "2호 팬 & 텐션 폭격기", desc: "동갑내기 예능 리액션 담당 멤버" },
+        { name: "와우", role: "정예 합방 멤버", desc: "오디오 지원 및 마인크래프트 플레이어" }
+      ]
+    };
+
+    // 로컬스토리지에서 데이터 로드
+    let siteData = JSON.parse(localStorage.getItem('craft_crew_data')) || defaultData;
+
+    // 초기 실행
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderAll();
+    });
+
+    // 탭 전환
+    function switchTab(tabName) {
+      ['main', 'world', 'schedule', 'members'].forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tabName) {
+          el.classList.remove('hidden');
+          el.classList.add('block');
+          btn.className = "px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-brand-card text-brand-periwinkle border border-brand-border";
+        } else {
+          el.classList.add('hidden');
+          el.classList.remove('block');
+          btn.className = "px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-white";
+        }
+      });
+      lucide.createIcons();
+    }
+
+    // 렌더링 함수
+    function renderAll() {
+      // 1. 공지사항
+      document.getElementById('notice-date-display').textContent = siteData.notice.date;
+      document.getElementById('notice-content-display').textContent = siteData.notice.content;
+
+      // 2. 메인 퀵 스케줄
+      if (siteData.schedules.length > 0) {
+        document.getElementById('main-quick-schedule').textContent = 
+          `${siteData.schedules[0].day} - ${siteData.schedules[0].title}`;
+      }
+
+      // 3. 세계관
+      const worldBox = document.getElementById('world-content-display');
+      if (!siteData.world || siteData.world.trim() === "") {
+        worldBox.innerHTML = `
+          <i data-lucide="scroll" class="w-12 h-12 text-slate-500 mb-3"></i>
+          <p class="text-slate-400 text-sm font-medium">아직 등록된 세계관 설정이 없습니다.</p>
+          <p class="text-slate-500 text-xs mt-1">공지사항의 '항'을 눌러 관리자 모드에서 언제든지 내용을 작성해 보세요.</p>
+        `;
+      } else {
+        worldBox.innerHTML = `
+          <div class="w-full text-left text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+            ${siteData.world}
+          </div>
+        `;
+      }
+
+      // 4. 스케줄 리스트
+      const scheduleBox = document.getElementById('schedule-content-display');
+      scheduleBox.innerHTML = siteData.schedules.map(s => `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-[#161524] rounded-xl border border-brand-border gap-2">
+          <div class="space-y-1">
+            <span class="text-xs font-mono text-brand-periwinkle font-semibold">${s.day}</span>
+            <h4 class="text-base font-bold text-white">${s.title}</h4>
+          </div>
+          <span class="self-start sm:self-center px-2.5 py-1 rounded-md tag-box text-xs font-bold">${s.tag}</span>
+        </div>
+      `).join('');
+
+      // 5. 멤버 리스트
+      const memberBox = document.getElementById('members-list-display');
+      memberBox.innerHTML = siteData.members.map(m => `
+        <div class="bg-[#161524] p-5 rounded-xl border border-brand-border space-y-3 relative overflow-hidden">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-tag border border-brand-periwinkle/30 flex items-center justify-center text-brand-periwinkle font-bold">
+              ${m.name.substring(0, 1)}
+            </div>
+            <div>
+              <h4 class="font-bold text-white text-base">${m.name}</h4>
+              <p class="text-xs text-brand-periwinkle font-medium">${m.role}</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">${m.desc}</p>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // 비밀번호 모달 열기 ('항' 클릭)
+    function triggerAdminModal() {
+      document.getElementById('admin-pass-input').value = "";
+      document.getElementById('auth-error-msg').classList.add('hidden');
+      document.getElementById('auth-modal').classList.remove('hidden');
+      setTimeout(() => document.getElementById('admin-pass-input').focus(), 50);
+    }
+
+    function closeAuthModal() {
+      document.getElementById('auth-modal').classList.add('hidden');
+    }
+
+    // 비밀번호 검증
+    function verifyAdminPass() {
+      const entered = document.getElementById('admin-pass-input').value;
+      if (entered === ADMIN_PASS) {
+        closeAuthModal();
+        openAdminDashboard();
+      } else {
+        document.getElementById('auth-error-msg').classList.remove('hidden');
+      }
+    }
+
+    // 관리자 대시보드 열기
+    function openAdminDashboard() {
+      // 폼에 기존 데이터 채우기
+      document.getElementById('edit-notice-date').value = siteData.notice.date;
+      document.getElementById('edit-notice-text').value = siteData.notice.content;
+      document.getElementById('edit-world-text').value = siteData.world || "";
+      
+      renderAdminScheduleEditor();
+      renderAdminMemberEditor();
+
+      setAdminTab('notice');
+      document.getElementById('admin-dashboard-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeAdminDashboard() {
+      document.getElementById('admin-dashboard-modal').classList.add('hidden');
+    }
+
+    // 관리자 모달 내부 탭 전환
+    function setAdminTab(tab) {
+      ['notice', 'world', 'schedule', 'members'].forEach(t => {
+        const panel = document.getElementById(`admin-panel-${t}`);
+        const btn = document.getElementById(`admin-tab-btn-${t}`);
+        if (t === tab) {
+          panel.classList.remove('hidden');
+          btn.className = "py-3 px-4 font-semibold text-brand-periwinkle border-b-2 border-brand-periwinkle";
+        } else {
+          panel.classList.add('hidden');
+          btn.className = "py-3 px-4 font-semibold text-slate-400 hover:text-white";
+        }
+      });
+      lucide.createIcons();
+    }
+
+    // 스케줄 에디터 렌더링
+    function renderAdminScheduleEditor() {
+      const container = document.getElementById('admin-schedule-list');
+      container.innerHTML = siteData.schedules.map((s, idx) => `
+        <div class="p-3 bg-[#12111E] border border-brand-border rounded-xl space-y-2 relative">
+          <button onclick="removeScheduleRow(${idx})" class="absolute top-2 right-2 text-rose-400 hover:text-rose-300 text-xs">삭제</button>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input type="text" value="${s.day}" placeholder="일시" onchange="siteData.schedules[${idx}].day = this.value" class="px-2 py-1 bg-[#161524] border border-brand-border rounded-lg text-white text-xs">
+            <input type="text" value="${s.title}" placeholder="제목" onchange="siteData.schedules[${idx}].title = this.value" class="px-2 py-1 bg-[#161524] border border-brand-border rounded-lg text-white text-xs col-span-1 sm:col-span-2">
+          </div>
+          <input type="text" value="${s.tag}" placeholder="태그" onchange="siteData.schedules[${idx}].tag = this.value" class="px-2 py-1 bg-[#161524] border border-brand-border rounded-lg text-brand-periwinkle text-xs w-full">
+        </div>
+      `).join('');
+    }
+
+    function addNewScheduleRow() {
+      siteData.schedules.push({ day: "새 일정 일시", title: "새로운 합방 일정", tag: "일반" });
+      renderAdminScheduleEditor();
+    }
+
+    function removeScheduleRow(index) {
+      siteData.schedules.splice(index, 1);
+      renderAdminScheduleEditor();
+    }
+
+    // 멤버 에디터 렌더링
+    function renderAdminMemberEditor() {
+      const container = document.getElementById('admin-members-list');
+      container.innerHTML = siteData.members.map((m, idx) => `
+        <div class="p-3 bg-[#12111E] border border-brand-border rounded-xl space-y-2 relative">
+          <button onclick="removeMemberRow(${idx})" class="absolute top-2 right-2 text-rose-400 hover:text-rose-300 text-xs">삭제</button>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" value="${m.name}" placeholder="이름" onchange="siteData.members[${idx}].name = this.value" class="px-2 py-1 bg-[#161524] border border-brand-border rounded-lg text-white text-xs">
+            <input type="text" value="${m.role}" placeholder="역할" onchange="siteData.members[${idx}].role = this.value" class="px-2 py-1 bg-[#161524] border border-brand-border rounded-lg text-brand-periwinkle text-xs">
+          </div>
+          <input type="text" value="${m.desc}" placeholder="소개 설명" onchange="siteData.members[${idx}].desc = this.value" class="px-2 py-1 bg-[#161524] border border-brand-border rounded-lg text-slate-300 text-xs w-full">
+        </div>
+      `).join('');
+    }
+
+    function addNewMemberRow() {
+      siteData.members.push({ name: "신규 멤버", role: "역할 지정", desc: "멤버 소개 한 줄" });
+      renderAdminMemberEditor();
+    }
+
+    function removeMemberRow(index) {
+      siteData.members.splice(index, 1);
+      renderAdminMemberEditor();
+    }
+
+    // 전체 변경사항 영구 저장
+    function saveAllAdminData() {
+      siteData.notice.date = document.getElementById('edit-notice-date').value;
+      siteData.notice.content = document.getElementById('edit-notice-text').value;
+      siteData.world = document.getElementById('edit-world-text').value;
+
+      localStorage.setItem('craft_crew_data', JSON.stringify(siteData));
+
+      renderAll();
+      closeAdminDashboard();
+
+      alert("모든 변경사항이 성공적으로 저장되었습니다!");
+    }
+  </script>
+</body>
+</html>
